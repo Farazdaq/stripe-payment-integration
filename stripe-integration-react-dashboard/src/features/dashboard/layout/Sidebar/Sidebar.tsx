@@ -1,7 +1,17 @@
 import { useTheme } from "../../../../theme/ThemeProvider";
 import { sidebarItems } from "./sidebar.config";
 
-export default function Sidebar({ active, setActive }: any) {
+type SidebarItem = {
+  key: string;
+  label: string;
+};
+
+type SidebarProps = {
+  active: string;
+  setActive: (key: string) => void;
+};
+
+export default function Sidebar({ active, setActive }: SidebarProps) {
   const { theme } = useTheme();
 
   return (
@@ -9,7 +19,7 @@ export default function Sidebar({ active, setActive }: any) {
       className="w-[80px] md:w-[220px] min-h-screen py-2.5 transition-all duration-300 shrink-0"
       style={{ background: theme.colors.sidebar }}
     >
-      {sidebarItems.map((item) => {
+      {sidebarItems.map((item: SidebarItem) => {
         const isActive = active === item.key;
 
         return (
@@ -24,7 +34,7 @@ export default function Sidebar({ active, setActive }: any) {
               }}
             >
               {/* Icon */}
-              <span className=" text-2xl md:text-lg flex items-center justify-center w-full md:w-auto">
+              <span className="text-2xl md:text-lg flex items-center justify-center w-full md:w-auto">
                 📦
               </span>
 
