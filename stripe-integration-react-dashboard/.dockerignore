@@ -1,0 +1,45 @@
+# =====================
+# Dependencies
+# =====================
+node_modules
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# =====================
+# Build outputs
+# =====================
+build
+dist
+
+# =====================
+# Environment files
+# =====================
+.env
+.env.local
+.env.development
+.env.production
+
+# =====================
+# Git files
+# =====================
+.git
+.gitignore
+
+# =====================
+# OS files
+# =====================
+.DS_Store
+Thumbs.db
+
+# =====================
+# IDE files
+# =====================
+.vscode
+.idea
+
+# =====================
+# Docker itself
+# =====================
+Dockerfile
+docker-compose.yml

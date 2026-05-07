@@ -1,0 +1,22 @@
+import { useTheme } from "../../../theme/ThemeProvider";
+import ThemeSwitch from "../../../components/ThemeSwitch";
+import LanguageDropdown from "../../../components/LanguageDropdown";
+
+export default function Navbar() {
+  const { theme } = useTheme();
+
+  return (
+    <div
+      className="h-[40px] md:h-[50px] lg:h-[70px]"
+      style={{
+        padding: "10px",
+        background: theme.colors.navbar,
+      }}
+    >
+      <div className="flex items-center gap-3 md:gap-5">
+        <ThemeSwitch title="Theme" />
+        <LanguageDropdown />
+      </div>
+    </div>
+  );
+}
