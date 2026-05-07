@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:watch": "vitest --watch",
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
     "i18next": "^26.0.8",
