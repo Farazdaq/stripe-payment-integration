@@ -1,4 +1,4 @@
-import { useTheme } from "../../../theme/ThemeProvider";
+import { useTheme } from "../../../theme/useTheme";
 import ThemeSwitch from "../../../components/ThemeSwitch";
 import LanguageDropdown from "../../../components/LanguageDropdown";
 

@@ -1,4 +1,4 @@
-import { useTheme } from "../../../../theme/ThemeProvider";
+import { useTheme } from "../../../../theme/useTheme";
 import { sidebarItems } from "./sidebar.config";
 
 type SidebarItem = {

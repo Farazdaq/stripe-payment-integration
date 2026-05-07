@@ -1,24 +1,13 @@
-import { createContext, useContext, useState } from "react";
+import { useState } from "react";
 import type { ReactNode } from "react";
 import { themes } from "./theme.config";
+import { ThemeContext, type ThemeMode } from "./theme.context";
 
-type ThemeMode = "light" | "dark";
-
-type Theme = (typeof themes)["light"];
-
-type ThemeContextType = {
-  mode: ThemeMode;
-  setMode: (mode: ThemeMode) => void;
-  theme: Theme;
-};
-
-const ThemeContext = createContext<ThemeContextType | null>(null);
-
-type ThemeProviderProps = {
+type Props = {
   children: ReactNode;
 };
 
-export function ThemeProvider({ children }: ThemeProviderProps) {
+export function ThemeProvider({ children }: Props) {
   const [mode, setMode] = useState<ThemeMode>("light");
 
   const theme = themes[mode];
@@ -37,14 +26,4 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
       </div>
     </ThemeContext.Provider>
   );
-}
-
-export function useTheme() {
-  const context = useContext(ThemeContext);
-
-  if (!context) {
-    throw new Error("useTheme must be used inside ThemeProvider");
-  }
-
-  return context;
 }

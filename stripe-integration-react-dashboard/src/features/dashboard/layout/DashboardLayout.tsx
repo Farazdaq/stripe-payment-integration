@@ -1,7 +1,7 @@
 // The DashboardLayout component serves as a Layout component for the dashboard section of the application.
 
 import { useState } from "react";
-import { useTheme } from "../../../theme/ThemeProvider.tsx";
+import { useTheme } from "../../../theme/useTheme";
 import {
   Navbar,
   Sidebar,

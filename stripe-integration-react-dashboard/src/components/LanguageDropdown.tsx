@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import ReactCountryFlag from "react-country-flag";
 import { changeLanguage } from "../i18n/changeLanguage";
-import { useTheme } from "../theme/ThemeProvider";
+import { useTheme } from "../theme/useTheme";
 
 type Language = {
   code: string;
