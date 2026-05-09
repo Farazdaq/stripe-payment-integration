@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test:watch": "vitest --watch",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "prepare": "husky"
   },
   "dependencies": {
     "i18next": "^26.0.8",
@@ -18,10 +19,13 @@
     "react-dom": "^19.2.5",
     "react-i18next": "^17.0.6",
     "react-router-dom": "^7.15.0",
+    "recharts": "^3.8.1",
     "vite-plugin-svgr": "^5.2.0",
     "zustand": "^5.0.13"
   },
   "devDependencies": {
+    "@commitlint/cli": "^21.0.0",
+    "@commitlint/config-conventional": "^21.0.0",
     "@eslint/js": "^10.0.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
@@ -35,6 +39,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.5.0",
+    "husky": "^9.1.7",
     "jsdom": "^29.1.1",
     "msw": "^2.14.3",
     "playwright": "^1.59.1",
