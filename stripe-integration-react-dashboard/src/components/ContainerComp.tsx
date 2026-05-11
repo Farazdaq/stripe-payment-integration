@@ -33,9 +33,8 @@ export default function ContainerComp({
   const style: React.CSSProperties = {
     width,
     height,
-    background: background
-      ? background
-      : theme.colors.containerCopBackgroundColor,
+    backgroundColor:theme.colors.containerCopBackgroundColor,
+   
     border: border
       ? `${stroke ?? 1}px solid ${borderColor ? borderColor : theme.colors.borderColor}`
       : undefined,

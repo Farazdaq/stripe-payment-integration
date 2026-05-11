@@ -33,7 +33,7 @@ export default function LineChartComp({
   data,
 }: LineChartCompProps) {
   return (
-    <div style={{ background: "#0c0d0d", padding: 20, alignItems: "center" }}>
+    <div style={{ background: "#2a4a8b", padding: 20, alignItems: "center" }}>
       <h3 style={{ textAlign: "left", marginBottom: 10, marginLeft: 40 }}>
         {title ?? "set title about"}
       </h3>

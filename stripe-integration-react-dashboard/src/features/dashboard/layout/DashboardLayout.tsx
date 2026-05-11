@@ -18,27 +18,33 @@ export default function DashboardLayout() {
 
   return (
     <div
-      className="flex flex-col h-screen w-screen"
+      className="flex flex-col w-screen h-screen overflow-hidden"
       style={{
         backgroundColor: theme.colors.bg,
       }}
     >
-      {/* TOP NAVBAR (FULL WIDTH) */}
-      <Navbar />
+      {/* TOP NAVBAR */}
+      <div className="shrink-0">
+        <Navbar />
+      </div>
 
-      {/* BELOW NAVBAR: SIDEBAR + CONTENT */}
-      <div className="flex flex-1 min-h-0">
-        {/* Sidebar */}
-        <Sidebar active={activePage} setActive={setActivePage} />
+      {/* BODY */}
+      <div className="flex flex-1 min-h-0 overflow-hidden">
+        {/* SIDEBAR */}
+        <div className="h-full shrink-0">
+          <Sidebar active={activePage} setActive={setActivePage} />
+        </div>
 
-        {/* Main content */}
-        <main className="flex-1 p-1 overflow-auto">
-          {activePage === "overview" && <Overview />}
-          {activePage === "customer" && <Customer />}
-          {activePage === "package" && <Package />}
-          {activePage === "invoice" && <Invoice />}
-          {activePage === "transaction" && <Transaction />}
-          {activePage === "subscription" && <Subscription />}
+        {/* MAIN CONTENT */}
+        <main className="flex-1 h-full overflow-y-auto overflow-x-hidden p-1">
+          <div className="min-h-full">
+            {activePage === "overview" && <Overview />}
+            {activePage === "customer" && <Customer />}
+            {activePage === "package" && <Package />}
+            {activePage === "invoice" && <Invoice />}
+            {activePage === "transaction" && <Transaction />}
+            {activePage === "subscription" && <Subscription />}
+          </div>
         </main>
       </div>
     </div>
