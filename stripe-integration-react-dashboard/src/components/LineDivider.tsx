@@ -1,3 +1,5 @@
+// for dorwing coloered lines as used on navbar to make lines
+
 type Point = {
   x?: number | string; // allow "100%"
   y?: number;
@@ -25,6 +27,7 @@ export default function LineDivider({
   if (!points || points.length === 0) {
     return (
       <div
+       data-testid="lineDivider"
         style={{
           height: thickness,
           width,
@@ -81,6 +84,7 @@ export default function LineDivider({
 
   return (
     <svg
+      data-testid="lineDivider-svg"
       width="100%"
       height={svgHeight}
       preserveAspectRatio="none"

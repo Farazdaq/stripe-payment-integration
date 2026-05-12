@@ -1,3 +1,5 @@
+// to make lines with corner radus
+
 type LineShaperProps = {
   color?: string;
   radiusLeftTop?: number;
@@ -30,6 +32,7 @@ export default function LineShaper({
 }: LineShaperProps) {
   return (
     <div
+      data-testId="lineShaper"
       style={{
         backgroundColor: color,
         height: thickness,

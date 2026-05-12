@@ -18,7 +18,7 @@ export default function Navbar() {
       {/* Title */}
       <p
         className="absolute right-10 top-5 text-[25px] underline underline-offset-1 decoration-[1px] tracking-wide font-['Chonburi']"
-        style={{ color: "#E0E0DD" }}
+        style={{ color: theme.colors.text}}
       >
         ATPAY
       </p>
@@ -26,25 +26,25 @@ export default function Navbar() {
       <div className="flex flex-col gap-1 md:gap-1">
         <div style={{ height: "3px", overflow: "visible" }}>
           <LineDivider
-            color="#E0E0DD"
+            color= {theme.colors.lineDivider }
             thickness="1px"
             points={[{ x: 0, y: 0 }, { x: 160, y: 0 }, { d: 35 }]}
           />
 
           <div className="ml-[9.9%] mb-1">
-            <LineDivider color="#E0E0DD" thickness="1px" />
+            <LineDivider color={theme.colors.lineDivider } thickness="1px" />
           </div>
         </div>
 
         <LineShaper
-          color="#E0E0DD"
+          color={theme.colors.lineDivider }
           thickness={30}
           length={"9%"}
           radiusRightTop={50}
         />
 
-        <LineDivider color="#E0E0DD" thickness="0.9px" />
-        <LineDivider color="#E0E0DD" thickness="0.9px" />
+        <LineDivider color={theme.colors.lineDivider } thickness="0.9px" />
+        <LineDivider color={theme.colors.lineDivider } thickness="0.9px" />
       </div>
     </div>
   );

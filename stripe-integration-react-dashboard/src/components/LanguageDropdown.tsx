@@ -3,6 +3,8 @@ import ReactCountryFlag from "react-country-flag";
 import { changeLanguage } from "../i18n/changeLanguage";
 import { useTheme } from "../theme/useTheme";
 
+
+// Contoler language accross all dashboard
 type Language = {
   code: string;
   label: string;

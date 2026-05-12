@@ -35,11 +35,10 @@ describe("Container Comp", () => {
     );
 
     const div = screen.getByTestId("container1");
-
     expect(div).toHaveStyle({
       width: "200px",
       height: "200px",
-      background: "#2A5269",
+      backgroundColor: "rgb(42, 82, 105)",
       borderTopLeftRadius: "10px",
       borderTopRightRadius: "10px",
       borderBottomLeftRadius: "10px",

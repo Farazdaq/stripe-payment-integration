@@ -1,5 +1,7 @@
 import { useTheme } from "../theme/useTheme";
 
+
+// To chanage dashbord theme drak or light globaly 
 type ThemeSwitchProps = {
   title?: string;
 };
