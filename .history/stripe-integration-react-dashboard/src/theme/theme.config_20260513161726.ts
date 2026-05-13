@@ -7,7 +7,7 @@ export const themes = {
       borderColor: "#111827",
       sidebar: "#ffffff",
       textSideBarItem: "#E0E0DD",
-      textSideBarItemSelected: "#E0E0DD",
+      extSideBarItemSelected: "#E0E0DD",
       navbar: "#ffffff",
       border: "#e5e7eb",
       lineDivider: "#E0E0DD",

@@ -6,32 +6,9 @@ function MockComponent() {
   return <div>Test</div>;
 }
 
-type FigCardsProps = {
-  totalRevenue: number;
-  activeSubscriptions: number;
-  invoicesPaid: number;
-  failedPayments: number;
-  totalCustomers: number;
-  topPackage: number;
-};
-function FigCards({
-  totalRevenue,
-  activeSubscriptions,
-  invoicesPaid,
-  failedPayments,
-  totalCustomers,
-  topPackage,
-}: FigCardsProps) {
-  return (
-    <div className="flex flex-row">
-      <p>{totalRevenue}</p>
-      <p>{activeSubscriptions}</p>
-      <p>{invoicesPaid}</p>
-      <p>{failedPayments}</p>
-      <p>{totalCustomers}</p>
-      <p>{topPackage}</p>
-    </div>
-  );
+type FigCardsProps = {};
+function FigCards({}: FigCardsProps) {
+  return <div className="flex flex-col"></div>;
 }
 export default function Overview() {
   const { t } = useTranslation();
@@ -39,19 +16,7 @@ export default function Overview() {
   return (
     <div className="flex flex-col gap-3 md:gap-3 pt-[0.3px] md:pt-[0.3px]">
       {/* Top containers */}
-      <ContainerComp
-        height={100}
-        componentDisplay={
-          <FigCards
-            totalRevenue={0}
-            activeSubscriptions={0}
-            invoicesPaid={0}
-            failedPayments={0}
-            totalCustomers={0}
-            topPackage={0}
-          />
-        }
-      />
+      <ContainerComp height={100} componentDisplay={<MockComponent />} />
 
       {/* Bottom horizontal containers */}
       <div className="flex flex-col md:flex-row gap-3 md:gap-3">

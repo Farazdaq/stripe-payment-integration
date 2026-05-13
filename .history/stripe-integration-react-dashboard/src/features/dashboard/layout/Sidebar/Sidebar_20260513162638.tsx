@@ -50,7 +50,7 @@ export default function Sidebar({ active, setActive }: SidebarProps) {
               }}
             >
               {/* Icon */}
-              <span className="text-2xl md:text-xl lg:text-2xl flex items-center justify-center w-full md:w-auto">
+              <span className="text-2xl md:text-lg flex items-center justify-center w-full md:w-auto">
                 <Icon />
               </span>
 

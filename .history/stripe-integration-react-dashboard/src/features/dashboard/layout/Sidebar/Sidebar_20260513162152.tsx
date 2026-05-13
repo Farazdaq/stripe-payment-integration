@@ -6,7 +6,6 @@ import { sidebarItems } from "./sidebar.config";
 type SidebarItem = {
   key: string;
   label: string;
-  icon: React.ElementType;
 };
 
 type SidebarProps = {
@@ -29,12 +28,8 @@ export default function Sidebar({ active, setActive }: SidebarProps) {
         marginBottom={4}
         radiusRightTop={50}
       />
-
       {sidebarItems.map((item: SidebarItem) => {
         const isActive = active === item.key;
-
-        // Dynamic icon component
-        const Icon = item.icon;
 
         return (
           <div key={item.key} className="flex">
@@ -50,8 +45,8 @@ export default function Sidebar({ active, setActive }: SidebarProps) {
               }}
             >
               {/* Icon */}
-              <span className="text-2xl md:text-xl lg:text-2xl flex items-center justify-center w-full md:w-auto">
-                <Icon />
+              <span className="text-2xl md:text-lg flex items-center justify-center w-full md:w-auto">
+                📦
               </span>
 
               {/* Label */}
@@ -63,7 +58,7 @@ export default function Sidebar({ active, setActive }: SidebarProps) {
         );
       })}
 
-      <div className="mt-[100%] flex justify-center">
+      <div className=" mt-[100%]">
         <AccountController
           isLogIn={true}
           direction="column"
