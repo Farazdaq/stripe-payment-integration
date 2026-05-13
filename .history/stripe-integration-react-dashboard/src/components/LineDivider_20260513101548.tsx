@@ -1,6 +1,5 @@
 // independent from line shaper and as normal line separator.
 // called to make svg shaped with radius, used mostly to add sort of logo style
-
 type Point = {
   x?: number | string; // allow "100%"
   y?: number;
@@ -16,9 +15,6 @@ type LineDividerProps = {
   points?: Point[];
 };
 
-// main function it returns normal line shaped using div
-// or it returns a svg when points and in both cases radius and passed props can be applied
-// see example on navbar
 export default function LineDivider({
   color = "red",
   thickness = "2px",

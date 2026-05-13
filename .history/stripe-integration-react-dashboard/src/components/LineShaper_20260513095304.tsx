@@ -92,7 +92,7 @@ export default function LineShaper({
 
   return (
     <div
-      data-testid="lineShaper"
+      data-testId="lineShaper"
       style={{
         backgroundColor: color,
         height: thickness,

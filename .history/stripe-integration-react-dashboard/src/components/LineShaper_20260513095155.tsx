@@ -24,7 +24,6 @@ type LineShaperProps = {
 };
 
 // get the margin props
-// Creates a clean margin style object.
 function getMargins({
   marginTop,
   marginBottom,
@@ -43,7 +42,6 @@ function getMargins({
 }
 
 // get border props
-// Creates border radius style object.
 function getBorderRadius({
   radiusLeftTop,
   radiusLeftBottom,
@@ -62,7 +60,6 @@ function getBorderRadius({
 }
 
 // shape the line to get line with targe shape
-// Main UI renderer.
 export default function LineShaper({
   color = "#000",
   radiusLeftTop = 0,
@@ -92,7 +89,7 @@ export default function LineShaper({
 
   return (
     <div
-      data-testid="lineShaper"
+      data-testId="lineShaper"
       style={{
         backgroundColor: color,
         height: thickness,

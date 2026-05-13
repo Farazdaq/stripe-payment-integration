@@ -62,7 +62,6 @@ function getBorderRadius({
 }
 
 // shape the line to get line with targe shape
-// Main UI renderer.
 export default function LineShaper({
   color = "#000",
   radiusLeftTop = 0,
@@ -92,7 +91,7 @@ export default function LineShaper({
 
   return (
     <div
-      data-testid="lineShaper"
+      data-testId="lineShaper"
       style={{
         backgroundColor: color,
         height: thickness,
