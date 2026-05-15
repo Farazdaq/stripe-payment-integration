@@ -9,55 +9,11 @@ import PackageTable from "../components/PackageTable";
 import PageControllerBar from "../components/PageControllerBar";
 import { useState } from "react";
 import TransactionTable from "../components/TransactionTable";
-import SubscriptionTable from "../components/SubscriptionTable";
 export default function Customer() {
   const [page, setPage] = useState(1);
   return (
     <div>
       <div className="p-6">
-        <div className="p-6">
-          <SubscriptionTable
-            data={[
-              {
-                id: 1,
-                subscriptionId: "SUB-1001",
-                customerId: "CUST-001",
-                plan: "Pro Plan",
-                price: 29,
-                interval: "Monthly",
-                status: "active",
-                startDate: "2026-01-01",
-                endDate: "2026-12-31",
-              },
-              {
-                id: 2,
-                subscriptionId: "SUB-1002",
-                customerId: "CUST-002",
-                plan: "Starter Plan",
-                price: 9,
-                interval: "Monthly",
-                status: "paused",
-                startDate: "2026-02-01",
-                endDate: "",
-              },
-              {
-                id: 3,
-                subscriptionId: "SUB-1003",
-                customerId: "CUST-003",
-                plan: "Enterprise Plan",
-                price: 99,
-                interval: "Yearly",
-                status: "canceled",
-                startDate: "2025-01-01",
-                endDate: "2025-12-31",
-              },
-            ]}
-            backgroundColor="#F8FAFC"
-            borderColor="#CBD5E1"
-            textColor="#0F172A"
-            onView={(row) => console.log("View subscription:", row)}
-          />
-        </div>
         <div className="p-6">
           <TransactionTable
             data={[

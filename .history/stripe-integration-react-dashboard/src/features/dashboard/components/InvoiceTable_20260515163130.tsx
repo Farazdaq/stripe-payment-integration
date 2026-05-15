@@ -89,12 +89,19 @@ export default function InvoiceTable({
               <td className="p-3 border-b">{item.id}</td>
               <td className="p-3 border-b">{item.invoiceId}</td>
 
-              {/* CUSTOMER (NO VIEW HERE) */}
-              <td className="p-3 border-b font-medium">{item.customer}</td>
+              <td className="p-3 border-b font-medium">
+                {item.customer}
+
+                {/* ACCOUNT VIEW LINK */}
+                <div>
+                  <button className="text-blue-600 underline text-xs">
+                    VIEW
+                  </button>
+                </div>
+              </td>
 
               <td className="p-3 border-b">{item.package}</td>
               <td className="p-3 border-b">{item.billing}</td>
-
               <td className="p-3 border-b font-semibold">${item.amount}</td>
 
               {/* STATUS */}
@@ -150,11 +157,9 @@ export default function InvoiceTable({
                 />
               </td>
 
-              {/* ACTION COLUMN (# ACCOUNT VIEW) */}
-              <td className="p-3 border-b text-center">
-                <button className="underline text-blue-600 hover:text-blue-800 text-sm">
-                  VIEW
-                </button>
+              {/* ACTION */}
+              <td className="p-3 border-b text-blue-600 underline cursor-pointer">
+                VIEW
               </td>
             </tr>
           ))}

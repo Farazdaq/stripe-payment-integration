@@ -76,9 +76,6 @@ export default function InvoiceTable({
             <th className="p-3 border-b" style={{ borderColor }}>
               Invoice
             </th>
-            <th className="p-3 border-b" style={{ borderColor }}>
-              #
-            </th>
           </tr>
         </thead>
 
@@ -89,12 +86,10 @@ export default function InvoiceTable({
               <td className="p-3 border-b">{item.id}</td>
               <td className="p-3 border-b">{item.invoiceId}</td>
 
-              {/* CUSTOMER (NO VIEW HERE) */}
               <td className="p-3 border-b font-medium">{item.customer}</td>
 
               <td className="p-3 border-b">{item.package}</td>
               <td className="p-3 border-b">{item.billing}</td>
-
               <td className="p-3 border-b font-semibold">${item.amount}</td>
 
               {/* STATUS */}
@@ -148,13 +143,6 @@ export default function InvoiceTable({
                     },
                   ]}
                 />
-              </td>
-
-              {/* ACTION COLUMN (# ACCOUNT VIEW) */}
-              <td className="p-3 border-b text-center">
-                <button className="underline text-blue-600 hover:text-blue-800 text-sm">
-                  VIEW
-                </button>
               </td>
             </tr>
           ))}
