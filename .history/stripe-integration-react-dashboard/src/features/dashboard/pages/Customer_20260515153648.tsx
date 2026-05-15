@@ -3,25 +3,14 @@ import FileDownloader from "../components/FileDownloader";
 import FileUploader from "../components/FileUploader";
 import ImgViewer from "../components/ImgViewer";
 import Loading from "../components/Loading";
-import PageControllerBar from "../components/PageControllerBar";
-import { useState } from "react";
+
 export default function Customer() {
-  const [page, setPage] = useState(1);
   return (
     <div>
-      <PageControllerBar
-        currentPage={page}
-        totalPages={7}
-        backgroundColor="#F1F5F9"
-        borderColor="#94A3B8"
-        textColor="#0F172A"
-        activeColor="#22C55E"
-        onPageChange={setPage}
-      />
       <ImgViewer
         src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e"
         width="20%"
-        height={100}
+        height={400}
         borderColor="#3B82F6"
         borderWidth={3}
         objectFit="cover"

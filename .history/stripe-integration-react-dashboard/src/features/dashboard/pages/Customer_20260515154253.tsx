@@ -4,7 +4,7 @@ import FileUploader from "../components/FileUploader";
 import ImgViewer from "../components/ImgViewer";
 import Loading from "../components/Loading";
 import PageControllerBar from "../components/PageControllerBar";
-import { useState } from "react";
+
 export default function Customer() {
   const [page, setPage] = useState(1);
   return (
