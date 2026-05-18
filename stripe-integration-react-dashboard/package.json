@@ -3,10 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://farazdaq.github.io/atpay-dashbord",
+  "homepage": "https://farazdaq.github.io/stripe-payment-integration/",
   "scripts": {
     "predeploy": "npm run build",
-   "deploy": "gh-pages -d dist",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
@@ -19,6 +19,7 @@
   "dependencies": {
     "docx": "^9.6.1",
     "file-saver": "^2.0.5",
+    "gh-pages": "^6.3.0",
     "i18next": "^26.0.8",
     "jspdf": "^4.2.1",
     "jspdf-autotable": "^5.0.7",
@@ -53,7 +54,6 @@
     "eslint": "^10.3.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
-    "gh-pages": "^6.3.0",
     "globals": "^17.5.0",
     "husky": "^8.0.3",
     "jsdom": "^29.1.1",
@@ -66,5 +66,4 @@
     "vite": "^8.0.10",
     "vitest": "^4.1.5"
   }
-  
 }
