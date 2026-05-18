@@ -169,7 +169,7 @@ export default function MultiLineChart({
   yTitle,
 
   /* Responsive defaults */
-  width = "100%",
+
   height = 350,
 
   weekData,

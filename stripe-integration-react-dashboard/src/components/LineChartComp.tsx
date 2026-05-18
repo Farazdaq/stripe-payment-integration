@@ -3,7 +3,6 @@ import {
   Line,
   XAxis,
   LineChart,
-  Tooltip,
   YAxis,
   Label,
   ResponsiveContainer,
@@ -75,14 +74,14 @@ export default function LineChartComp({
   yTitle,
 
   /* Responsive defaults */
-  width = "100%",
+
   height = 320,
 
   chartColor,
   weekData,
   monthData,
 }: LineChartCompProps) {
-  const { theme } = useTheme();
+
 
   const chartTextSize = 11;
 

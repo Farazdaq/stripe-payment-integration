@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { saveAs } from "file-saver";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";

@@ -1,4 +1,4 @@
-import React from "react";
+
 import FileDownloader from "./FileDownloader";
 import { useTheme } from "../../../theme/useTheme";
 

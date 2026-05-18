@@ -1,6 +1,4 @@
 import { useTheme } from "../../../theme/useTheme";
-import ThemeSwitch from "../../../components/ThemeSwitch";
-import LanguageDropdown from "../../../components/LanguageDropdown";
 import LineShaper from "../../../components/LineShaper";
 import LineDivider from "../../../components/LineDivider";
 

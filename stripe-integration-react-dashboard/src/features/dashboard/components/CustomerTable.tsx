@@ -1,4 +1,4 @@
-import React from "react";
+
 
 type Customer = {
   id: string | number;

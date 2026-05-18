@@ -24,7 +24,6 @@ export default function ContainerComp({
   radiusLeftBottom,
   radiusRightTop,
   radiusRightBottom,
-  background,
   borderColor,
   border,
   stroke,
