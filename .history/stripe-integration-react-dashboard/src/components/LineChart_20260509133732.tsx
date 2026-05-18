@@ -1,3 +1,0 @@
-type LineChartProps = {
-  title: string;
-};
