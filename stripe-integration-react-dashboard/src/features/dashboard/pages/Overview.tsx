@@ -8,27 +8,15 @@ import CustomTable from "../../../components/CustomTable";
 import PaymentStatusPieChart from "../components/PaymentStatusPieChart";
 import CustomerGrowthBarChart from "../components/CustomerGrowthBarChart";
 
-function MockComponent() {
-  return <div>Test</div>;
-}
-
-type FigCardsProps = {
-  totalRevenue: number;
-  activeSubscriptions: number;
-  invoicesPaid: number;
-  failedPayments: number;
-  totalCustomers: number;
-  topPackage: number;
-};
-
 export default function Overview() {
   const { t } = useTranslation();
   const { theme } = useTheme();
+
   return (
-    <div className="flex flex-col gap-2 md:gap-2 pt-[0.3px] md:pt-[0.3px]">
-      {/* Top containers */}
+    <div className="flex flex-col gap-2 pl-0.1 md:pl-0.1 w-full">
+      {/* Top Cards */}
       <ContainerComp
-        height={110}
+        width="100%"
         componentDisplay={
           <FigCards
             totalRevenue={100.0}
@@ -41,18 +29,19 @@ export default function Overview() {
         }
       />
 
-      {/* Bottom horizontal containers */}
-      <div className="flex flex-col md:flex-row gap-3 md:gap-3">
-        <div className="flex-1">
-          <ContainerComp
-            radiusRightTop={50}
-            height={300}
-            componentDisplay={
+      {/* Charts Section */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 w-full">
+        {/* Revenue Chart */}
+        <ContainerComp
+          radiusRightTop={50}
+          width="100%"
+          componentDisplay={
+            <div className="w-full min-h-[350px]">
               <LineChartComp
                 title="Revenue Chart"
                 chartColor={theme.colors.chartColor}
-                width={750}
-                height={220}
+                width={500}
+                height={350}
                 weekData={[
                   { xValue: "Mon", yValue: 1200 },
                   { xValue: "Tue", yValue: 200 },
@@ -69,15 +58,16 @@ export default function Overview() {
                   { xValue: "Week 4", yValue: 10500 },
                 ]}
               />
-            }
-          />
-        </div>
+            </div>
+          }
+        />
 
-        <div className="flex-1">
-          <ContainerComp
-            radiusLeftBottom={50}
-            height={300}
-            componentDisplay={
+        {/* Subscription Growth */}
+        <ContainerComp
+          radiusLeftBottom={50}
+          width="100%"
+          componentDisplay={
+            <div className="w-full min-h-[350px]">
               <MultiLineChart
                 chartColors={{
                   grid: theme.colors.borderColor,
@@ -85,8 +75,8 @@ export default function Overview() {
                   label: theme.colors.text,
                 }}
                 showTooltip={false}
-                height={220}
-                width={750}
+                width={500}
+                height={350}
                 title="Subscription Growth"
                 xTitle="Time"
                 yTitle="Users"
@@ -136,139 +126,166 @@ export default function Overview() {
                   cancellations: "Cancellations",
                 }}
               />
-            }
-          />
-        </div>
+            </div>
+          }
+        />
       </div>
+
+      {/* Bottom Analytics Section */}
       <ContainerComp
         radiusLeftTop={50}
-        height={456}
+        width="100%"
         componentDisplay={
-          <div className="flex flex-row gap-8 md:gap-8 p-7">
-            <CustomTable
-              headers={[
-                "Transaction ID",
-                "Customer",
-                "Amount ($)",
-                "Status",
-                "Date",
-              ]}
-              rows={[
-                ["TXN-1001", "John Doe", "$120.50", "Completed", "2026-05-01"],
-                ["TXN-1002", "Sarah Smith", "$89.99", "Pending", "2026-05-02"],
-                [
-                  "TXN-1003",
-                  "Michael Johnson",
-                  "$450.00",
-                  "Failed",
-                  "2026-05-03",
-                ],
-                [
-                  "TXN-1004",
-                  "Emma Wilson",
-                  "$230.75",
-                  "Completed",
-                  "2026-05-04",
-                ],
-                ["TXN-1005", "David Brown", "$99.49", "Refunded", "2026-05-05"],
-                [
-                  "TXN-1006",
-                  "Olivia Davis",
-                  "$310.20",
-                  "Completed",
-                  "2026-05-06",
-                ],
-              ]}
-              width="800px"
-              headerBg={theme.colors.containerCopBackgroundColor}
-              headerTextColor={theme.colors.borderColor}
-              rowTextColor={theme.colors.borderColor}
-              borderColor={theme.colors.borderColor}
-              lineWidth={1}
-              fontSize={12}
-              onViewAll={() => console.log("View all clicked")}
-            />
-            <ContainerComp
-              border={true}
-              borderColor={theme.colors.borderColor}
-              width={450}
-              height={400}
-              componentDisplay={
-                <CustomerGrowthBarChart
-                  width="100%"
-                  height={250}
-                  customerBarColor="#3b82f6"
-                  subscriberBarColor="#22c55e"
-                  weekData={[
-                    {
-                      month: "Mon",
-                      customers: 120,
-                      subscribers: 80,
-                    },
-                    {
-                      month: "Tue",
-                      customers: 180,
-                      subscribers: 130,
-                    },
-                    {
-                      month: "Wed",
-                      customers: 220,
-                      subscribers: 170,
-                    },
-                    {
-                      month: "Thu",
-                      customers: 260,
-                      subscribers: 210,
-                    },
-                    {
-                      month: "Fri",
-                      customers: 310,
-                      subscribers: 260,
-                    },
-                  ]}
-                  monthData={[
-                    {
-                      month: "Jan",
-                      customers: 500,
-                      subscribers: 300,
-                    },
-                    {
-                      month: "Feb",
-                      customers: 700,
-                      subscribers: 420,
-                    },
-                    {
-                      month: "Mar",
-                      customers: 920,
-                      subscribers: 600,
-                    },
-                    {
-                      month: "Apr",
-                      customers: 1100,
-                      subscribers: 760,
-                    },
-                  ]}
-                />
-              }
-            />
+          <div className="grid grid-cols-1 2xl:grid-cols-3 gap-4 p-4 w-full">
+            {/* Table */}
+            <div className="2xl:col-span-2 overflow-x-auto">
+              <CustomTable
+                headers={[
+                  "Transaction ID",
+                  "Customer",
+                  "Amount ($)",
+                  "Status",
+                  "Date",
+                ]}
+                rows={[
+                  [
+                    "TXN-1001",
+                    "John Doe",
+                    "$120.50",
+                    "Completed",
+                    "2026-05-01",
+                  ],
+                  [
+                    "TXN-1002",
+                    "Sarah Smith",
+                    "$89.99",
+                    "Pending",
+                    "2026-05-02",
+                  ],
+                  [
+                    "TXN-1003",
+                    "Michael Johnson",
+                    "$450.00",
+                    "Failed",
+                    "2026-05-03",
+                  ],
+                  [
+                    "TXN-1004",
+                    "Emma Wilson",
+                    "$230.75",
+                    "Completed",
+                    "2026-05-04",
+                  ],
+                  [
+                    "TXN-1005",
+                    "David Brown",
+                    "$99.49",
+                    "Refunded",
+                    "2026-05-05",
+                  ],
+                  [
+                    "TXN-1006",
+                    "Olivia Davis",
+                    "$310.20",
+                    "Completed",
+                    "2026-05-06",
+                  ],
+                ]}
+                width="100%"
+                headerBg={theme.colors.containerCopBackgroundColor}
+                headerTextColor={theme.colors.borderColor}
+                rowTextColor={theme.colors.borderColor}
+                borderColor={theme.colors.borderColor}
+                lineWidth={1}
+                fontSize={12}
+                onViewAll={() => console.log("View all clicked")}
+              />
+            </div>
 
-            <ContainerComp
-              height={400}
-              width={400}
-              border={true}
-              borderColor={theme.colors.borderColor}
-              componentDisplay={
-                <div className="pt-10">
-                  <PaymentStatusPieChart
-                    data={[
-                      { name: "Paid", value: 65 },
-                      { name: "Pending", value: 25 },
-                      { name: "Failed", value: 10 },
+            {/* Right Side Charts */}
+            <div className="flex flex-col gap-4">
+              {/* Customer Growth */}
+              <ContainerComp
+                border={true}
+                borderColor={theme.colors.borderColor}
+                width="100%"
+                componentDisplay={
+                  <CustomerGrowthBarChart
+                    width="100%"
+                    height={250}
+                    customerBarColor="#3b82f6"
+                    subscriberBarColor="#22c55e"
+                    weekData={[
+                      {
+                        month: "Mon",
+                        customers: 120,
+                        subscribers: 80,
+                      },
+                      {
+                        month: "Tue",
+                        customers: 180,
+                        subscribers: 130,
+                      },
+                      {
+                        month: "Wed",
+                        customers: 220,
+                        subscribers: 170,
+                      },
+                      {
+                        month: "Thu",
+                        customers: 260,
+                        subscribers: 210,
+                      },
+                      {
+                        month: "Fri",
+                        customers: 310,
+                        subscribers: 260,
+                      },
+                    ]}
+                    monthData={[
+                      {
+                        month: "Jan",
+                        customers: 500,
+                        subscribers: 300,
+                      },
+                      {
+                        month: "Feb",
+                        customers: 700,
+                        subscribers: 420,
+                      },
+                      {
+                        month: "Mar",
+                        customers: 920,
+                        subscribers: 600,
+                      },
+                      {
+                        month: "Apr",
+                        customers: 1100,
+                        subscribers: 760,
+                      },
                     ]}
                   />
-                </div>
-              }
-            ></ContainerComp>
+                }
+              />
+
+              {/* Pie Chart */}
+              <ContainerComp
+                border={true}
+                borderColor={theme.colors.borderColor}
+                width="100%"
+                componentDisplay={
+                  <div className="flex items-center justify-center py-6">
+                    <PaymentStatusPieChart
+                      data={[
+                        { name: "Paid", value: 65 },
+                        { name: "Pending", value: 25 },
+                        { name: "Failed", value: 10 },
+                      ]}
+                    />
+                  </div>
+                }
+              />
+            </div>
           </div>
         }
       />

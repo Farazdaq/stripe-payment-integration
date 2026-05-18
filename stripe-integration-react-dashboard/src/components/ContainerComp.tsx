@@ -2,8 +2,8 @@ import { useTheme } from "../theme/useTheme";
 
 // Mad as globaly used continers to host a passed component to show in colored container
 type ContainerCompProps = {
-  width?: number;
-  height?: number;
+  width?: string;
+  height?: string;
   radiusAll?: number;
   radiusLeftTop?: number;
   radiusLeftBottom?: number;

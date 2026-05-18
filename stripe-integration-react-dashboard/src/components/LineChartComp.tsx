@@ -6,6 +6,7 @@ import {
   Tooltip,
   YAxis,
   Label,
+  ResponsiveContainer,
 } from "recharts";
 import { useMemo, useState } from "react";
 import { useTheme } from "../theme/useTheme";
@@ -21,8 +22,11 @@ type LineChartCompProps = {
   title: string;
   xTitle?: string;
   yTitle?: string;
-  width?: number;
-  height?: number;
+
+  /* Responsive sizes */
+  width?: string | number;
+  height?: string | number;
+
   chartColor?: string;
   weekData?: ChartData[];
   monthData?: ChartData[];
@@ -46,9 +50,8 @@ function RangeDropdown({
       onChange={(e) => onChange(e.target.value as RangeType)}
       style={{
         border: `1px solid ${theme.colors.text}`,
-        borderRadius: 3,
-        padding: "3px 5px",
-        marginRight: "7%",
+        borderRadius: 6,
+        padding: "4px 8px",
         background: theme.colors.containerCopBackgroundColor,
         color: theme.colors.text,
         fontSize: 13,
@@ -70,8 +73,11 @@ export default function LineChartComp({
   title,
   xTitle,
   yTitle,
-  width = 500,
-  height = 300,
+
+  /* Responsive defaults */
+  width = "100%",
+  height = 320,
+
   chartColor,
   weekData,
   monthData,
@@ -96,17 +102,24 @@ export default function LineChartComp({
   const data = range === "week" ? (weekData ?? []) : (monthData ?? []);
 
   return (
-    <div style={{ padding: 20, position: "relative" }}>
+    <div
+      style={{
+        width: "100%",
+        height,
+        padding: 16,
+        position: "relative",
+        boxSizing: "border-box",
+      }}
+    >
       {/* LEFT SIDE LABEL */}
       <div
         style={{
           position: "absolute",
-          left: 0,
+          left: -10,
           top: "50%",
           transform: "translateY(-50%) rotate(-90deg)",
           fontSize: 12,
           color: chartColor,
-          marginRight: "2%",
         }}
       >
         Revenue
@@ -118,15 +131,16 @@ export default function LineChartComp({
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          marginBottom: 12,
+          marginBottom: 16,
+          paddingLeft: 20,
         }}
       >
         <h3
           style={{
             fontSize: 14,
             fontWeight: 600,
-            marginLeft: "8%",
             color: chartColor,
+            margin: 0,
           }}
         >
           {title}
@@ -141,41 +155,60 @@ export default function LineChartComp({
         )}
       </div>
 
-      {/* CHART */}
-      <LineChart width={width} height={height} data={data}>
-        <CartesianGrid stroke={chartColor} strokeWidth={0.5} />
+      {/* RESPONSIVE CHART */}
+      <div
+        style={{
+          width: "100%",
+          height: "calc(100% - 60px)",
+        }}
+      >
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={data}>
+            <CartesianGrid
+              stroke={chartColor}
+              strokeWidth={0.5}
+              strokeDasharray="3 3"
+            />
 
-        <XAxis
-          dataKey="xValue"
-          stroke={chartColor}
-          tick={{ fontSize: chartTextSize }}
-        >
-          <Label
-            value={xTitle ?? ""}
-            position="bottom"
-            fill={chartColor}
-            style={{ fontSize: chartTextSize }}
-          />
-        </XAxis>
+            <XAxis
+              dataKey="xValue"
+              stroke={chartColor}
+              tick={{ fontSize: chartTextSize }}
+            >
+              <Label
+                value={xTitle ?? ""}
+                position="bottom"
+                fill={chartColor}
+                style={{ fontSize: chartTextSize }}
+              />
+            </XAxis>
 
-        <YAxis stroke={chartColor} tick={{ fontSize: chartTextSize }}>
-          <Label
-            value={yTitle ?? ""}
-            position="left"
-            fill={chartColor}
-            style={{ fontSize: chartTextSize }}
-          />
-        </YAxis>
-        {/*<Tooltip /> */}
+            <YAxis
+              stroke={chartColor}
+              tick={{ fontSize: chartTextSize }}
+            >
+              <Label
+                value={yTitle ?? ""}
+                angle={-90}
+                position="insideLeft"
+                fill={chartColor}
+                style={{ fontSize: chartTextSize }}
+              />
+            </YAxis>
+  {/*  <Tooltip />*/}
+           
 
-        <Line
-          type="monotone"
-          dataKey="yValue"
-          stroke="#fcfc3f"
-          strokeWidth={0.8}
-          dot={{ fill: chartColor, r: 3 }}
-        />
-      </LineChart>
+            <Line
+              type="monotone"
+              dataKey="yValue"
+              stroke="#fcfc3f"
+              strokeWidth={2}
+              dot={{ fill: chartColor, r: 4 }}
+              activeDot={{ r: 6 }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 }

@@ -55,8 +55,8 @@ function StatsCard({ value, title }: CardItemProps) {
   return (
     <ContainerComp
       radiusAll={6}
-      width={250}
-      height={80}
+      width="30%"
+      height="80%"
       border={true}
       borderColor={theme.colors.borderColor}
       componentDisplay={
