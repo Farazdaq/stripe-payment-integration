@@ -1,0 +1,97 @@
+@startuml
+left to right direction
+
+actor "Front Desk Staff" as FDS
+actor "Housekeeping Staff" as HS
+actor "Maintenance Staff" as MS
+actor "Supervisor" as SUP
+actor "Incident Manager" as IM
+
+actor "Android Wrapper Device" as AND
+actor "WebRTC Backbone" as WEBRTC
+actor "STT / Translation Service" as AI
+
+rectangle "PTT Real-Time Voice System (Hotel Operations)" {
+
+  usecase "Join PTT Channel" as UC1
+  usecase "Leave PTT Channel" as UC2
+
+  usecase "Push-to-Talk (Start Transmission)" as UC3
+  usecase "Release Transmission" as UC4
+
+  usecase "Receive Live Audio" as UC5
+
+  usecase "Floor Control (Single Speaker Rule)" as UC6
+
+  usecase "Create / Join Live Call" as UC7
+  usecase "Rejoin Call After Disconnect" as UC8
+
+  usecase "Activate Incident Channel" as UC9
+  usecase "Send Incident Message" as UC10
+
+  usecase "Generate Transcript (STT)" as UC11
+  usecase "Translate Message" as UC12
+  usecase "Create Voice Card (Audio + Transcript)" as UC13
+
+  usecase "Device Registration & Presence" as UC14
+  usecase "Network Reconnect Handling" as UC15
+
+  usecase "Send Push Notification" as UC16
+  usecase "Audit Logging" as UC17
+}
+
+' ===== USER INTERACTIONS =====
+FDS --> UC1
+HS --> UC1
+MS --> UC1
+SUP --> UC1
+IM --> UC1
+
+FDS --> UC3
+HS --> UC3
+MS --> UC3
+
+FDS --> UC4
+HS --> UC4
+MS --> UC4
+
+FDS --> UC5
+HS --> UC5
+MS --> UC5
+SUP --> UC5
+
+SUP --> UC7
+FDS --> UC7
+HS --> UC7
+
+SUP --> UC9
+IM --> UC9
+
+IM --> UC10
+
+AND --> UC14
+AND --> UC15
+
+' ===== SYSTEM RELATIONS =====
+UC3 --> UC6
+UC7 --> UC6
+
+UC4 --> UC11
+UC11 --> UC12
+UC12 --> UC13
+
+UC3 --> UC17
+UC4 --> UC17
+UC9 --> UC17
+UC7 --> UC17
+
+UC6 --> WEBRTC
+UC3 --> WEBRTC
+UC5 --> WEBRTC
+
+UC11 --> AI
+UC12 --> AI
+
+UC16 --> AND
+
+@enduml

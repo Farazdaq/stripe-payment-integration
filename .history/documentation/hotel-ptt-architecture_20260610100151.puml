@@ -1,0 +1,35 @@
+@startuml
+title Hotel Operations App - Simple Voice & Task System
+
+skinparam shadowing false
+skinparam defaultFontSize 16
+
+actor "Hotel Staff\n(Housekeeping / Maintenance)" as User
+
+rectangle "Mobile App (Tablet / Phone)" {
+
+  rectangle "App Screen (Tasks / Rooms)" as UI
+  rectangle "Voice Button (Push-to-Talk)" as PTT
+}
+
+rectangle "Hotel System" {
+
+  rectangle "Hotel Management System\n(CodeIgniter)" as Backend
+  rectangle "Live Voice System\n(WebRTC)" as Voice
+  database "Database\n(MySQL)" as DB
+}
+
+' ---------------- FLOW ----------------
+
+User --> UI : View Tasks & Rooms
+UI --> Backend : Load Data (Tasks, Tickets)
+Backend --> DB : Store / Retrieve Data
+
+User --> PTT : Press to Talk
+PTT --> Voice : Send Live Voice
+Voice --> PTT : Receive Voice
+
+Backend --> Voice : Connect Voice Channels
+Voice --> Backend : Update Status / Logs
+
+@enduml

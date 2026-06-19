@@ -1,0 +1,37 @@
+@startuml
+title ESL Speech Recognition - Backend + AI Activity Diagram
+
+start
+
+:Receive Audio Request (Laravel API);
+:Validate Audio File;
+
+if (Audio Valid?) then (Yes)
+
+  :Send Audio to Speech-to-Text AI;
+  :Receive Transcribed Text;
+
+  :Normalize Text;
+
+  :Fetch Correct Sentence from Database;
+
+  :Compare Words;
+
+  if (Word Match?) then (Yes)
+    :Mark Word = BLUE;
+  else (No)
+    :Mark Word = RED;
+  endif
+
+  :Calculate Score (%);
+
+  :Store Result in Database;
+
+  :Return Response;
+
+else (No)
+  :Return Error;
+endif
+
+stop
+@enduml

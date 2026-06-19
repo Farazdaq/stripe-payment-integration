@@ -1,0 +1,58 @@
+@startuml
+
+start
+
+:Housekeeper identifies issue;
+
+if (Maintenance needed?) then (Yes)
+
+:Create Maintenance Request;
+:Add description;
+:Attach photo (optional);
+:Record voice note;
+
+:Maintenance ticket created;
+
+fork
+:Send notification to technician;
+fork again
+:Open task communication thread;
+end fork
+
+:Technician reviews ticket;
+:Listen to voice note;
+
+if (Need clarification?) then (Yes)
+
+```
+if (Communication method?) then (Text)
+  :Send text message;
+elseif (Voice Note)
+  :Send voice note response;
+else (Push-to-Talk)
+  :Start push-to-talk conversation;
+endif
+
+if (Issue still unclear?) then (Yes)
+  :Escalate to live call;
+endif
+```
+
+endif
+
+:Perform maintenance work;
+:Update repair status;
+:Attach completion notes/photo;
+:Notify housekeeper;
+:Verify issue resolved;
+:Close ticket;
+
+else (No)
+
+:Update room status;
+
+endif
+
+stop
+
+@enduml

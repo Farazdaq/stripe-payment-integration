@@ -1,0 +1,52 @@
+@startuml
+
+left to right direction
+
+actor Housekeeper
+actor "Maintenance Technician" as Technician
+actor Supervisor
+
+rectangle "Hotel Operations Communication System" {
+
+usecase "View Assigned Room" as UC1
+usecase "Update Room Status" as UC2
+usecase "Create Maintenance Request" as UC3
+
+usecase "Send Text Message" as UC4
+usecase "Record Voice Note\non Task/Ticket" as UC5
+usecase "Listen to Voice Note" as UC6
+
+usecase "Push-to-Talk\nConversation" as UC7
+usecase "Escalate to Live Call" as UC8
+
+usecase "Receive Maintenance Request" as UC9
+usecase "Update Repair Status" as UC10
+
+usecase "Monitor Tasks" as UC11
+usecase "Review Communication History" as UC12
+}
+
+Housekeeper --> UC1
+Housekeeper --> UC2
+Housekeeper --> UC3
+Housekeeper --> UC4
+Housekeeper --> UC5
+Housekeeper --> UC7
+Housekeeper --> UC8
+
+Technician --> UC9
+Technician --> UC6
+Technician --> UC4
+Technician --> UC5
+Technician --> UC7
+Technician --> UC10
+Technician --> UC8
+
+Supervisor --> UC11
+Supervisor --> UC12
+
+UC3 .> UC5 : <<include>>
+UC9 .> UC6 : <<include>>
+UC7 .> UC8 : <<extend>>
+
+@enduml

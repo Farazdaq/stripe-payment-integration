@@ -1,0 +1,64 @@
+@startuml
+title Hotel Operations Platform - Voice Enabled System (PTT Architecture)
+
+skinparam componentStyle rectangle
+skinparam shadowing false
+skinparam defaultFontSize 14
+
+actor "Hotel Staff\n(Housekeeping / Maintenance)" as User
+
+rectangle "Mobile Devices (Tablet / Phone)" {
+
+  rectangle "Flutter Thin Native Container" as Flutter {
+    rectangle "WebView Screen\n(Housekeeping + Tasks UI)" as WebView
+    rectangle "Native Features" as Native {
+      rectangle "Push-to-Talk Button"
+      rectangle "Microphone Access"
+      rectangle "Push Notifications"
+      rectangle "Background Service"
+    }
+  }
+}
+
+rectangle "Internet" as NET
+
+rectangle "Hotel Backend System" {
+
+  rectangle "CodeIgniter Server" as CI {
+    rectangle "Task Management"
+    rectangle "Housekeeping System"
+    rectangle "Maintenance System"
+    rectangle "Chat & Voice Logs"
+    rectangle "User & Roles"
+  }
+
+  rectangle "WebRTC Voice Server" as RTC {
+    rectangle "Live Voice Channels"
+    rectangle "Push-to-Talk Streaming"
+    rectangle "Real-time Audio Routing"
+  }
+
+  database "MySQL Database" as DB
+}
+
+' ---------------- FLOW ----------------
+
+User --> WebView : Uses App (Tasks / Rooms / Tickets)
+
+WebView --> CI : Loads Screens + Data (Web App)
+CI --> DB : Stores all hotel data
+
+WebView --> RTC : Start / Join Voice Channel
+RTC --> WebView : Live Voice Audio
+
+Native --> RTC : Sends Microphone Audio (PTT)
+RTC --> Native : Receives Live Voice
+
+Native --> CI : Notifications / Status Updates
+CI --> Native : Push Alerts (new tasks / messages)
+
+Flutter --> NET
+CI --> NET
+RTC --> NET
+
+@enduml
